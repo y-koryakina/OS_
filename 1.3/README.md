@@ -3,7 +3,7 @@
 Создание динамической библиотеки из файла `dynamic_lib.c`:
 
 ```bash
-gcc -shared -o libdynamic_lib.so dynamic_lib.c
+gcc -shared -o libdynamic_lib.so dynamic_lib.c -fPIC
 ```
 
 Компиляция `hello_dynamic.c`:
