@@ -14,3 +14,4 @@ ar rcs libhello.a static_lib.o
 
 ```bash
 gcc -o hello_static hello_static.c -L. -lhello
+```
