@@ -4,3 +4,4 @@
 
 ```bash
 gcc -o hello hello.c
+```
