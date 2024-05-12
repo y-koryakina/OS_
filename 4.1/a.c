@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 
 int global_initialized_var = 10;
 int global_uninitialized_var;
@@ -21,9 +22,7 @@ int main() {
     printf("Global constant address: %p\n", (void*)&global_constant);
 
     function();
-    while(1<2){
-        printf("");
-    }
+    sleep(60);
   
     return 0;
 }
