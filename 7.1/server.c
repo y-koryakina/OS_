@@ -12,7 +12,7 @@ int main() {
     char buffer[MAXLINE];
     struct sockaddr_in servaddr, cliaddr;
 
-    //Создание серверного сокета
+    // Создание серверного сокета
     if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
         perror("socket creation failed");
         exit(EXIT_FAILURE);
@@ -25,7 +25,7 @@ int main() {
     servaddr.sin_addr.s_addr = INADDR_ANY;
     servaddr.sin_port = htons(PORT);
 
-    //Привязка сокета к адресу и порту
+    // Привязка сокета к адресу и порту
     if (bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr)) < 0) {
         perror("bind failed");
         close(sockfd);
@@ -38,12 +38,12 @@ int main() {
         int len, n;
         len = sizeof(cliaddr);
 
-        //Получение данных от клиента
+        // Получение данных от клиента
         n = recvfrom(sockfd, (char *)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr *)&cliaddr, &len);
         buffer[n] = '\0';
         printf("Client: %s\n", buffer);
 
-        //Отправка ответа клиенту
+        // Отправка ответа клиенту
         sendto(sockfd, (const char *)buffer, strlen(buffer), MSG_CONFIRM, (const struct sockaddr *)&cliaddr, len);
         printf("Message sent to client.\n");
     }
