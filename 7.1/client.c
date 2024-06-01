@@ -13,7 +13,7 @@ int main() {
     char *hello = "Hello from client";
     struct sockaddr_in servaddr;
 
-    //Создание клиентского сокета
+    // Создание клиентского сокета
     if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
         perror("socket creation failed");
         exit(EXIT_FAILURE);
@@ -25,13 +25,13 @@ int main() {
     servaddr.sin_port = htons(PORT);
     servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
-    //Отправка данных серверу
+    // Отправка данных серверу
     sendto(sockfd, (const char *)hello, strlen(hello), MSG_CONFIRM, (const struct sockaddr *)&servaddr, sizeof(servaddr));
     printf("Hello message sent.\n");
 
     int n, len;
     len = sizeof(servaddr);
-    //Получение ответа от сервера
+    // Получение ответа от сервера
     n = recvfrom(sockfd, (char *)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr *)&servaddr, &len);
     buffer[n] = '\0';
     printf("Server: %s\n", buffer);
